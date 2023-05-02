@@ -26,14 +26,17 @@ export default class TableTrick {
             let col_count = Number.parseInt(sizes[2]);
             let table_id = TableTrick.random_id();
             let table = Parchment.create('table', table_id);
-            for (var ri = 0; ri < row_count; ri++) {
+            for (let ri = 0; ri < row_count; ri++) {
                 let row_id = TableTrick.random_id();
                 let tr = Parchment.create('tr', row_id);
                 table.appendChild(tr);
-                for (var ci = 0; ci < col_count; ci++) {
+                for (let ci = 0; ci < col_count; ci++) {
                     let cell_id = TableTrick.random_id();
                     value = table_id + '|' + row_id + '|' + cell_id;
                     let td = Parchment.create('td', value);
+
+                    TableTrick.createResizeElement(td.domNode);
+
                     tr.appendChild(td);
                     let p = Parchment.create('block');
                     td.appendChild(p);
@@ -60,6 +63,7 @@ export default class TableTrick {
                     let row_id = tr.domNode.getAttribute('row_id');
                     let cell_id = TableTrick.random_id();
                     let td = Parchment.create('td', table_id + '|' + row_id + '|' + cell_id);
+                    TableTrick.createResizeElement(td.domNode);
                     tr.appendChild(td);
                 });
             }
@@ -82,7 +86,6 @@ export default class TableTrick {
                     p.appendChild(br);
                 }
                 table.appendChild(new_row);
-                console.log(new_row);
             }
         } else {
             let table_id = TableTrick.random_id();
@@ -98,5 +101,11 @@ export default class TableTrick {
             blot.insertBefore(table, top_branch);
             return table;
         }
+    }
+
+    static createResizeElement(td) {
+        const resize = document.createElement('div');
+        resize.classList.add('resize');
+        td.appendChild(resize);
     }
 }
