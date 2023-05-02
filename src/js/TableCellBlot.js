@@ -11,10 +11,14 @@ class TableCell extends ContainBlot {
     static create(value) {
         let tagName = 'td';
         let node = super.create(tagName);
-        let ids = value.split('|');
-        node.setAttribute('table_id', ids[0]);
-        node.setAttribute('row_id', ids[1]);
-        node.setAttribute('cell_id', ids[2]);
+        let data = value.split('|');
+        node.setAttribute('table_id', data[0]);
+        node.setAttribute('row_id', data[1]);
+        node.setAttribute('cell_id', data[2]);
+        if (data[3]) {
+            node.style.width = data[3];
+        }
+        
         return node;
     }
 
@@ -28,7 +32,8 @@ class TableCell extends ContainBlot {
             [this.statics.blotName]:
             this.domNode.getAttribute('table_id') + '|' +
             this.domNode.getAttribute('row_id') + '|' +
-            this.domNode.getAttribute('cell_id')
+            this.domNode.getAttribute('cell_id') + '|' +
+            this.domNode.style.width,
         }
     }
 
