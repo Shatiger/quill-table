@@ -23,7 +23,7 @@ class TableModule {
         this.mouseDownHandler = this.mouseDownHandler.bind(this);
         this.mouseMoveHandler = this.mouseMoveHandler.bind(this);
         this.mouseUpHandler = this.mouseUpHandler.bind(this);
-        this.textChangeHandler = this.textChangeHandler.bind(this);
+        this.addResizeElement = this.addResizeElement.bind(this);
         
         let toolbar = quill.getModule('toolbar');
         toolbar.addHandler('table', function (value) {
