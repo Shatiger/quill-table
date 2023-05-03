@@ -105,7 +105,7 @@ export default class TableTrick {
     }
 
     static createResizeElement(td) {
-        const resize = document.createElement('div');
+        const resize = document.createElement('p');
         resize.classList.add('resize');
         td.appendChild(resize);
     }
