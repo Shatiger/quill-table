@@ -79,6 +79,7 @@ export default class TableTrick {
                 for (let i = col_count - 1; i >= 0; i--) {
                     let cell_id = TableTrick.random_id();
                     let td = Parchment.create('td', table_id + '|' + row_id + '|' + cell_id);
+                    TableTrick.createResizeElement(td.domNode);
                     new_row.appendChild(td);
                     let p = Parchment.create('block');
                     td.appendChild(p);
