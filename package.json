@@ -1,6 +1,6 @@
 {
   "name": "quill-table-resize",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Table functionality in QuillJS + resize",
   "main": "dist/quill-table.js",
   "scripts": {
