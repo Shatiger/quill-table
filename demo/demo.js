@@ -12600,6 +12600,7 @@ var TableTrick = function () {
                     for (var i = _col_count - 1; i >= 0; i--) {
                         var _cell_id = TableTrick.random_id();
                         var _td3 = Parchment.create('td', _table_id2 + '|' + _row_id + '|' + _cell_id);
+                        TableTrick.createResizeElement(_td3.domNode);
                         new_row.appendChild(_td3);
                         var _p = Parchment.create('block');
                         _td3.appendChild(_p);
@@ -12626,7 +12627,7 @@ var TableTrick = function () {
     }, {
         key: 'createResizeElement',
         value: function createResizeElement(td) {
-            var resize = document.createElement('div');
+            var resize = document.createElement('p');
             resize.classList.add('resize');
             td.appendChild(resize);
         }
@@ -15787,7 +15788,7 @@ var TableModule = function () {
         this.mouseDownHandler = this.mouseDownHandler.bind(this);
         this.mouseMoveHandler = this.mouseMoveHandler.bind(this);
         this.mouseUpHandler = this.mouseUpHandler.bind(this);
-        this.textChangeHandler = this.textChangeHandler.bind(this);
+        this.addResizeElement = this.addResizeElement.bind(this);
 
         var toolbar = quill.getModule('toolbar');
         toolbar.addHandler('table', function (value) {
